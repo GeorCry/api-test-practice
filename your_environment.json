@@ -1,0 +1,28 @@
+{
+	"id": "f7f895a6-b4f9-4596-a169-fbc8ec82f454",
+	"name": "New Environment",
+	"values": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "my_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "testURL",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-11-05T19:37:08.441Z",
+	"_postman_exported_using": "Postman/12.35.2"
+}
