@@ -17,5 +17,22 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Run Newman
-        run: npx newman run my_api_tests.json -e your_environment.json -d users.csv
+      - name: Install Newman and Reporter
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+      - name: Run Newman Tests
+        env:
+          # Передаем секрет из GitHub в переменную окружения
+          MY_BASE_URL: ${{ secrets.BASE_URL }}
+        run: |
+          npx newman run my_api_tests.json -e your_environment.json -d users.csv -r htmlextra --reporter-htmlextra-export report.html
+
+      - name: Upload HTML Report
+        # Этот шаг сработает, даже если тесты упадут (if: always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-report
+          path: report.html
